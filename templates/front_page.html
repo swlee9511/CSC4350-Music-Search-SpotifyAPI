@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul id="flash" class=flash>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <h1> User List </h1>
+    {% for i in range(length) %}
+    <p> {{user_id[i]}} </p>
+    {% endfor %}
+
+    <h1> Log In: </h1>
+    <form method="POST" action="/login">
+        <input type="text" name="user_id" placeholder="user ID">
+        <input type="submit" value="Login">
+    </form>
+
+    <h2> Sign Up: </h2>
+    <form method="POST" action="/sign_up">
+        <input type="text" name="user_id" placeholder="user ID">
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+
+</html>
